@@ -1,3 +1,4 @@
+/* 🔹 Algemene stijlen */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f5f5f5;
@@ -5,16 +6,17 @@ body {
     padding: 0;
 }
 
-/* GRID CONTAINER */
+/* 🔹 Grid Layout */
 main {
     display: grid;
     grid-template-areas: 
         "header"
         "media"
         "footer";
-    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-rows: 10vh auto 10vh;
 }
 
+/* 🔹 Algemene container stijlen */
 .main-container {
     display: flex;
     justify-content: center;
@@ -22,33 +24,33 @@ main {
     flex-direction: column;
 }
 
-/* MAIN CONTAINER ITEMS*/
-
+/* 🔹 Media Container (bevat game content) */
 .media-container {
     display: flex;
-    gap: 150px;
+    gap: 8vw; /* Responsieve gap */
 }
 
+/* 🔹 Input Container */
 .input-container {
-    padding-top: 30px;
+    padding-top: 2rem;
 }
 
+/* 🔹 Social Media Icons */
 .socials-container {
     display: flex;
     background-color: transparent;
-    gap: 15px;
+    gap: 1rem;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-/* GRID ITEMS */
+/* 🔹 Grid Items */
 header {
     grid-area: header;
     background-color: #4CAF50;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 2.5rem; /* Responsive font-size */
     color: white;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -68,69 +70,52 @@ footer {
     align-items: center;
 }
 
-/* MEDIA-CONTAINER ITEMS */ 
-
-.weetjes-container {
+/* 🔹 Media-Container Items (de game blokken) */
+.weetjes-container, 
+.plaatjes-container, 
+.scoreboard-container {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 300px;
+    width: 30vw; /* 30% van de viewport breedte */
+    max-width: 300px; /* Voorkomt dat het te groot wordt */
+    height: auto;
     display: flex;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
     flex-direction: column;
+    padding: 1.5rem;
 }
 
-.plaatjes-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 300px;
-}
-
-.scoreboard-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
+/* 🔹 Square Container */
 .square-container {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    padding-bottom: 30px;
+    gap: 5vw;
+    padding-bottom: 2rem;
 }
 
-/* IN-CONTAINER ITEMS */ 
-
+/* 🔹 Input Field */
 .input {
     background-color: white;
     border-radius: 8px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 90vw; /* Op mobiel vult hij het scherm */
+    max-width: 300px; /* Op desktop blijft hij kleiner */
     height: 50px;
     text-align: center;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 25px;
+    font-size: 1.5rem;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.weetjes-tekst {
-}
-
+/* 🔹 Icons */
 .fab {
     color: white;
+    font-size: 1.8rem;
 }
 
 .fab:hover {
@@ -144,4 +129,66 @@ footer {
 
 .fas {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 📱 🔹 MEDIA QUERIES: Responsieve aanpassingen */
+@media (max-width: 768px) { /* Tablets en kleiner */
+    main {
+        grid-template-rows: 10vh auto 10vh;
+    }
+
+    .media-container {
+        flex-direction: column; /* Zet items onder elkaar */
+        gap: 50px;
+        align-items: center;
+    }
+
+    .square-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .weetjes-container, 
+    .plaatjes-container, 
+    .scoreboard-container {
+        width: 90vw;
+        height: auto;
+    }
+
+    .input {
+        width: 90vw;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    header {
+        font-size: 1.8rem;
+    }
+
+    .fab {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) { /* Smartphones */
+    .media-container {
+        gap: 20px;
+    }
+
+    .square-container {
+        gap: 20px;
+    }
+
+    .input {
+        font-size: 1rem;
+    }
+
+    header {
+        font-size: 1.5rem;
+    }
+
+    .fab {
+        font-size: 1.2rem;
+    }
 }
