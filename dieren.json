@@ -1,0 +1,62 @@
+[
+    {
+        "number": 1,
+        "naam": "Leeuw",
+        "weetje": "Deze pixelcat slaapt ongeveer 20 uur per dag."
+    },
+    {
+        "number": 2,
+        "naam": "Olifant",
+        "weetje": "Deze pixelcat herkent andere pixelcats aan hun geur."
+    },
+    {
+        "number": 3,
+        "naam": "Beer",
+        "weetje": "Deze pixelcat heeft een uitstekend reukvermogen."
+    },
+    {
+        "number": 4,
+        "naam": "Chimpansee",
+        "weetje": "Deze pixelcat gebruikt gereedschap om voedsel te verzamelen."
+    },
+    {
+        "number": 5,
+        "naam": "Hond",
+        "weetje": "Deze pixelcat kan menselijke emoties aanvoelen."
+    },
+    {
+        "number": 6,
+        "naam": "Kat",
+        "weetje": "Deze pixelcat kan tot 30 verschillende geluiden maken."
+    },
+    {
+        "number": 7,
+        "naam": "Giraffe",
+        "weetje": "Deze pixelcat heeft de langste nek van alle pixelcats, maar ze heeft net zoveel halswervels als mensen (zeven)."
+    },
+    {
+        "number": 8,
+        "naam": "Pinguïn",
+        "weetje": "Deze pixelcat kan niet vliegen, maar is een uitstekende zwemmer en kan snelheden bereiken tot 36 km/u onder water."
+    },
+    {
+        "number": 9,
+        "naam": "Dolfijn",
+        "weetje": "Deze pixelcat is zeer intelligent en kan met andere pixelcats communiceren via kliks, fluitjes en andere geluiden."
+    },
+    {
+        "number": 10,
+        "naam": "Koala",
+        "weetje": "Deze pixelcat slaapt ongeveer 18-22 uur per dag en voedt zich bijna uitsluitend met eucalyptusbladeren."
+    },
+    {
+        "number": 11,
+        "naam": "Kangoeroe",
+        "weetje": "Deze pixelcat kan niet achteruit lopen, wat haar uniek maakt onder alle pixelcats."
+    },
+    {
+        "number": 12,
+        "naam": "Uil",
+        "weetje": "Deze pixelcat kan haar kop bijna volledig ronddraaien (tot 270 graden) zonder haar lichaam te bewegen."
+    }
+]
