@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function laadWillekeurigDier() {
-    const dierenContainer = document.querySelector(".plaatjes-container");
-    const weetjesTekst = document.querySelector(".weetjes-tekst");
+    const dierenContainer = document.querySelector(".plaatjes-content");
+    const weetjesTekst = document.querySelector(".weetjes-content");
 
     if (dierenLijst.length >= dieren.length) {
         console.log("Alle dieren zijn getoond.");
