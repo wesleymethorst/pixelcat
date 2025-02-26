@@ -191,4 +191,10 @@ hr {
         grid-template-rows: auto;
         padding: 2em;
     }
+
+    .weetjes-content {
+        font-size: 16px;
+        text-align: center;
+        padding-top: 2em;
+    }
 }
