@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const MONGO_URI = process.env.MONGO_URI;
-const dbName = "pixelcat"; // Pas aan naar jouw database naam
+const dbName = "pixelcat"; // Zorg dat dit overeenkomt met je MongoDB Atlas database
 
 let cachedClient = null; // Cache om herhaalde connecties te voorkomen
 
@@ -9,10 +9,13 @@ async function connectToDatabase() {
     if (cachedClient) {
         return cachedClient;
     }
-    
-    const client = new MongoClient(MONGO_URI);
+
+    const client = new MongoClient(MONGO_URI, {
+        serverSelectionTimeoutMS: 5000, // Timeout als MongoDB niet bereikbaar is
+    });
+
     await client.connect();
-    cachedClient = client; // Bewaar de client voor hergebruik
+    cachedClient = client;
     return client;
 }
 
