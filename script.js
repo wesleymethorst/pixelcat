@@ -47,16 +47,29 @@ function laadWillekeurigDier() {
     weetjesTekst.textContent = huidigDier.weetje;
 }
 
+function triggerCorrectAnimation() {
+    const correctIcon = document.getElementById("correctScore");
+    correctIcon.classList.add("correct-animation");
+    setTimeout(() => correctIcon.classList.remove("correct-animation"), 500);
+}
+
+function triggerWrongAnimation() {
+    const wrongIcon = document.getElementById("wrongScore");
+    wrongIcon.classList.add("wrong-animation");
+    setTimeout(() => wrongIcon.classList.remove("wrong-animation"), 500);
+}
 
 function updateCorrect() {
     correct++;
     document.getElementById("correctScore").textContent = correct;
-  }
-  
-  function updateWrong() {
+    triggerCorrectAnimation();
+}
+
+function updateWrong() {
     wrong++;
     document.getElementById("wrongScore").textContent = wrong;
-  }
+    triggerWrongAnimation();
+}
 
 // CONTROLEER INPUT TEXTBOX
 function controleerInput(input) {
