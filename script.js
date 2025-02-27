@@ -128,6 +128,7 @@ function createRandomNumber() {
     return Math.floor(Math.random() * dieren.length)
 }
 
+// Na het tonen van het eindscherm in toonEindScherm():
 function toonEindScherm() {
     document.querySelector('.media-container').style.display = 'none';
     document.querySelector('.stats-container').style.display = 'none';
@@ -137,7 +138,42 @@ function toonEindScherm() {
         <p>Goed: ${correct}</p>
         <p>Fout: ${wrong}</p>
     `;
-}
+  
+    // Eerst de score opslaan via de API:
+    fetch('/api/leaderboard', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ playerName, score: correct })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Score toegevoegd:", data);
+      // Vervolgens het leaderboard ophalen:
+      updateLeaderboard();
+    })
+    .catch(err => console.error("Fout bij score toevoegen:", err));
+  }
+  
+  function updateLeaderboard() {
+    fetch('/api/leaderboard')
+      .then(response => response.json())
+      .then(data => {
+        const leaderboard = data.leaderboard;
+        const leaderboardContainer = document.querySelector('.scoreboard-content');
+        // Maak de inhoud leeg
+        leaderboardContainer.innerHTML = '';
+        // Voeg elke score toe als een list item
+        leaderboard.forEach(entry => {
+          const li = document.createElement('li');
+          li.textContent = `${entry.playerName} - ${entry.score} goed`;
+          leaderboardContainer.appendChild(li);
+        });
+      })
+      .catch(err => console.error("Fout bij ophalen leaderboard:", err));
+  }
+  
 
 function restartGame() {
     correct = 0;
