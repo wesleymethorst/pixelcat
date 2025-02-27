@@ -3,6 +3,7 @@ const dierenLijst = [];
 let huidigDier = null;
 let correct = 0;
 let wrong = 0;
+let playerName = ""; // Declare playerName as a global variable
 
 // VERKRIJG ALLE DATA OVER DIEREN
 fetch('dieren.json')
@@ -28,12 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function startGame() {
-    const playerName = document.getElementById('playerName').value;
+    playerName = document.getElementById('playerName').value; // Set the global variable
     if (playerName) {
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.media-container').style.display = 'grid';
         document.querySelector('.stats-container').style.display = 'grid';
-        // You can store the player name if needed
         console.log(`Player Name: ${playerName}`);
     } else {
         alert('Voer je naam in om te beginnen!');
@@ -46,7 +46,7 @@ function laadWillekeurigDier() {
 
     if (dierenLijst.length >= dieren.length) {
         console.log("Alle dieren zijn getoond.");
-        console.log(`Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`);
+        console.log(`Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`); // Use the global variable
         return;
     }
 
