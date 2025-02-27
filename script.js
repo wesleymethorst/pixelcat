@@ -114,14 +114,15 @@ function toonEindScherm() {
 }
 
 function restartGame() {
+    laadWillekeurigDier();
     correct = 0;
     wrong = 0;
-    dierenLijst = [];; // Reset the dierenLijst array
+    dierenLijst = [];
     huidigDier = null;
-    playerName = ""; // Reset the player name
-    document.getElementById('playerName').value = ""; // Clear the input field
-    document.getElementById("correctScore").textContent = correct; // Reset the correct score display
-    document.getElementById("wrongScore").textContent = wrong; // Reset the wrong score display
+    playerName = "";
+    document.getElementById('playerName').value = "";
+    document.getElementById("correctScore").textContent = correct;
+    document.getElementById("wrongScore").textContent = wrong;
     document.querySelector('.end-container').style.display = 'none';
     document.querySelector('.start-container').style.display = 'flex';
 }
