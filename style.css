@@ -208,6 +208,17 @@ hr {
     to { transform: rotate(360deg); }
 }
 
+.header-image {
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.header-image:hover {
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) { 
     .media-container {
         grid-template-areas:
