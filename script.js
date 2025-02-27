@@ -134,8 +134,8 @@ function toonEindScherm() {
     document.querySelector('.end-container').style.display = 'flex';
     document.getElementById('endMessage').innerHTML = `
         <p>Naam: ${playerName}</p>
-        <p>Correct: ${correct}</p>
-        <p>Wrong: ${wrong}</p>
+        <p>Goed: ${correct}</p>
+        <p>Fout: ${wrong}</p>
     `;
 }
 
