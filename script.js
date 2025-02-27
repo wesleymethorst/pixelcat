@@ -53,6 +53,7 @@ function startGame() {
 function laadWillekeurigDier() {
     const dierenContainer = document.querySelector(".plaatjes-container");
     const weetjesTekst = document.querySelector(".weetjes-content");
+    const loadingSpinner = document.querySelector(".loading-spinner");
 
     if (dierenLijst.length >= dieren.length) {
         toonEindScherm();
@@ -65,9 +66,20 @@ function laadWillekeurigDier() {
     }
 
     dierenLijst.push(randomNummer);
-    huidigDier = dieren[randomNummer];  // Opslaan in de globale variabele
-    dierenContainer.src = `images/${huidigDier.number}.jpg`;
-    weetjesTekst.textContent = huidigDier.weetje;
+    huidigDier = dieren[randomNummer];  
+
+    loadingSpinner.style.display = 'block';
+    dierenContainer.style.display = 'none';
+
+    const img = new Image();
+    img.src = `images/${huidigDier.number}.jpg`;
+    img.onload = () => {
+        dierenContainer.src = img.src;
+        weetjesTekst.textContent = huidigDier.weetje;
+
+        loadingSpinner.style.display = 'none';
+        dierenContainer.style.display = 'block';
+    };
 }
 
 function triggerCorrectAnimation() {
