@@ -11,55 +11,50 @@
 
     <body>
         <header>Pixelcat</header>
-        <!-- Start Menu -->
-        <div id="start-menu">
-            <h1>Welkom bij Pixelcat!</h1>
-            <label for="player-name">Voer je naam in:</label>
-            <input id="player-name" type="text" placeholder="Jouw naam...">
-            <button id="start-game">Start het spel</button>
-        </div>
 
-        <!-- Game Interface -->
         <main>
-            <div id="game-menu" style="display: none;">
-                <section class="media-container">
-                    <div class="weetjes-container">
-                        <h1 class="weetjes-content-titel">Weetje over Pixelcat</h1>
-                        <hr>
-                        <p class="weetjes-content">Weetje over een dier</p>
-                    </div>
-                    <img class="plaatjes-container" src="">
-                    <div class="scoreboard-container">
-                        <h1 class="scoreboard-content-titel">Scoreboard</h1>
-                        <hr>
-                        <ol class="scoreboard-content">
-                            <li>Wesley - 12 goed</li>
-                            <li>Elisa - 10 goed</li>
-                            <li>Devil - 8 goed</li>
-                            <li>George - 7 goed</li>
-                            <li>Winnie - 5 goed</li>
-                        </ol>
-                    </div>
-                    
-                </section>
+            <!-- Start Menu -->
+            <section class="start-container">
+                <div class="start-box">
+                    <h1>Welkom bij Pixelcat!</h1>
+                    <input type="text" id="playerName" placeholder="Voer je naam in">
+                    <button onclick="startGame()">Start Spel</button>
+                </div>
+            </section>
 
-                <section class="stats-container">
-                    <div class="fontawesome-container">
-                        <i id="correctScore" class="fas fa-check" style='font-size:35px; color: #4CAF50;'> 0</i>
-                        <i id="wrongScore" class="fas fa-times" style='font-size:35px; color: red;'> 0</i>
-                    </div>
-                    <div class="input-container">
-                        <input class ="input" type="text" name="input" placeholder="DIERENNAAM">
-                    </div>
-                </section>
-            </div>
+            <!-- Game Interface -->
+            <section class="media-container" style="display: none;">
+                <div class="weetjes-container">
+                    <h1 class="weetjes-content-titel">Weetje over Pixelcat</h1>
+                    <hr>
+                    <p class="weetjes-content">Weetje over een dier</p>
+                </div>
+                <img class="plaatjes-container" src="">
+                <div class="scoreboard-container">
+                    <h1 class="scoreboard-content-titel">Scoreboard</h1>
+                    <hr>
+                    <ol class="scoreboard-content">
+                        <li>Wesley - 12 goed</li>
+                        <li>Elisa - 10 goed</li>
+                        <li>Devil - 8 goed</li>
+                        <li>George - 7 goed</li>
+                        <li>Winnie - 5 goed</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="stats-container" style="display: none;">
+                <div class="fontawesome-container">
+                    <i id="correctScore" class="fas fa-check" style='font-size:35px; color: #4CAF50;'> 0</i>
+                    <i id="wrongScore" class="fas fa-times" style='font-size:35px; color: red;'> 0</i>
+                </div>
+                <div class="input-container">
+                    <input class ="input" type="text" name="input" placeholder="DIERENNAAM">
+                </div>
+            </section>
 
             <!-- End Menu -->
-            <div id="end-menu" style="display: none;">
-                <h1>Je hebt het spel beëindigd!</h1>
-                <p>Je score: <span id="final-score">0</span></p>
-                <button id="play-again">Speel opnieuw</button>
-            </div>
+            <!-- <div class="end-container" display="none"></div> -->
         </main>
 
         <footer>

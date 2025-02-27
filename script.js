@@ -27,6 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 });
 
+function startGame() {
+    const playerName = document.getElementById('playerName').value;
+    if (playerName) {
+        document.querySelector('.start-container').style.display = 'none';
+        document.querySelector('.media-container').style.display = 'grid';
+        document.querySelector('.stats-container').style.display = 'grid';
+        // You can store the player name if needed
+        console.log(`Player Name: ${playerName}`);
+    } else {
+        alert('Voer je naam in om te beginnen!');
+    }
+}
+
 function laadWillekeurigDier() {
     const dierenContainer = document.querySelector(".plaatjes-container");
     const weetjesTekst = document.querySelector(".weetjes-content");
