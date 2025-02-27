@@ -147,7 +147,12 @@ function toonEindScherm() {
       },
       body: JSON.stringify({ playerName, score: correct })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
       console.log("Score toegevoegd:", data);
       // Vervolgens het leaderboard ophalen:
