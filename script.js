@@ -132,7 +132,11 @@ function toonEindScherm() {
     document.querySelector('.media-container').style.display = 'none';
     document.querySelector('.stats-container').style.display = 'none';
     document.querySelector('.end-container').style.display = 'flex';
-    document.getElementById('endMessage').textContent = `Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`;
+    document.getElementById('endMessage').innerHTML = `
+        <p>Naam: ${playerName}</p>
+        <p>Correct: ${correct}</p>
+        <p>Wrong: ${wrong}</p>
+    `;
 }
 
 function restartGame() {
