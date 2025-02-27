@@ -13,6 +13,9 @@ fetch('dieren.json')
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Preload images
+    preloadImages();
+
     const animalInput = document.querySelector(".input");
 
     // animalInput.addEventListener("input", function() {
@@ -26,6 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     })
 });
+
+function preloadImages() {
+    dieren.forEach(dier => {
+        const img = new Image();
+        img.src = `images/${dier.number}.jpg`;
+    });
+}
 
 function startGame() {
     playerName = document.getElementById('playerName').value; // Set the global variable
@@ -116,13 +126,14 @@ function toonEindScherm() {
 function restartGame() {
     correct = 0;
     wrong = 0;
-    dierenLijst = [];
+    dierenLijst.length = 0; // Reset the array correctly
     huidigDier = null;
     playerName = "";
-    laadWillekeurigDier();
     document.getElementById('playerName').value = "";
     document.getElementById("correctScore").textContent = correct;
     document.getElementById("wrongScore").textContent = wrong;
     document.querySelector('.end-container').style.display = 'none';
     document.querySelector('.start-container').style.display = 'flex';
+    document.querySelector('.media-container').style.display = 'none';
+    document.querySelector('.stats-container').style.display = 'none';
 }
