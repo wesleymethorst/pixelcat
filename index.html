@@ -17,7 +17,7 @@
             <section class="start-container">
                 <div class="start-box">
                     <h1>Welkom bij Pixelcat!</h1>
-                    <input type="text" id="playerName" placeholder="Voer je naam in">
+                    <input type="text" id="playerName" placeholder="Voer je naam in" onkeypress="if(event.key === 'Enter') startGame()">
                     <button onclick="startGame()">Start Spel</button>
                 </div>
             </section>
