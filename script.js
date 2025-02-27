@@ -46,6 +46,7 @@ function laadWillekeurigDier() {
 
     if (dierenLijst.length >= dieren.length) {
         console.log("Alle dieren zijn getoond.");
+        console.log(`Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`);
         return;
     }
 
