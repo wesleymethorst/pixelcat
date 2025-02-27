@@ -116,8 +116,12 @@ function toonEindScherm() {
 function restartGame() {
     correct = 0;
     wrong = 0;
-    dierenLijst.length = 0;
+    dierenLijst.length = 0; // Reset the dierenLijst array
     huidigDier = null;
+    playerName = ""; // Reset the player name
+    document.getElementById('playerName').value = ""; // Clear the input field
+    document.getElementById("correctScore").textContent = correct; // Reset the correct score display
+    document.getElementById("wrongScore").textContent = wrong; // Reset the wrong score display
     document.querySelector('.end-container').style.display = 'none';
     document.querySelector('.start-container').style.display = 'flex';
 }
