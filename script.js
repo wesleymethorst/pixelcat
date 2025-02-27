@@ -116,7 +116,7 @@ function toonEindScherm() {
 function restartGame() {
     correct = 0;
     wrong = 0;
-    dierenLijst.length = 0; // Reset the dierenLijst array
+    dierenLijst = [];; // Reset the dierenLijst array
     huidigDier = null;
     playerName = ""; // Reset the player name
     document.getElementById('playerName').value = ""; // Clear the input field
