@@ -114,7 +114,7 @@ function toonEindScherm() {
 }
 
 function restartGame() {
-    laadWillekeurigDier();
+    // laadWillekeurigDier();
     correct = 0;
     wrong = 0;
     dierenLijst = [];
