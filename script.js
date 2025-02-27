@@ -140,7 +140,7 @@ function toonEindScherm() {
     `;
   
     // Eerst de score opslaan via de API:
-    fetch('/api/leaderboard', {
+    fetch('/api/scoreboard', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -157,7 +157,7 @@ function toonEindScherm() {
   }
   
   function updateLeaderboard() {
-    fetch('/api/leaderboard')
+    fetch('/api/scoreboard')
       .then(response => response.json())
       .then(data => {
         const leaderboard = data.leaderboard;
@@ -173,7 +173,6 @@ function toonEindScherm() {
       })
       .catch(err => console.error("Fout bij ophalen leaderboard:", err));
   }
-  
 
 function restartGame() {
     correct = 0;

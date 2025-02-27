@@ -1,4 +1,4 @@
-// api/leaderboard.js
+// api/scoreboard.js
 
 import { MongoClient } from "mongodb";
 
