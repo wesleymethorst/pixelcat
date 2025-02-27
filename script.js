@@ -1,94 +1,134 @@
-const dieren = [];
-const dierenLijst = [];
-let huidigDier = null;
+let playerName = '';
 let correct = 0;
 let wrong = 0;
+let huidigDier = null;
+let dierenLijst = [];
 
-// VERKRIJG ALLE DATA OVER DIEREN
-fetch('dieren.json')
-    .then(response => response.json())
-    .then(data => {   
-        dieren.push(...data);
-        laadWillekeurigDier()
-});
+// DOM-elementen
+const startMenu = document.getElementById("start-menu");
+const gameMenu = document.getElementById("game-menu");
+const endMenu = document.getElementById("end-menu");
+const playerNameInput = document.getElementById("player-name");
+const startGameButton = document.getElementById("start-game");
+const playAgainButton = document.getElementById("play-again");
+const finalScoreDisplay = document.getElementById("final-score");
+const correctScore = document.getElementById("correctScore");
+const wrongScore = document.getElementById("wrongScore");
+const animalInput = document.querySelector(".input");
+const weetjesTekst = document.querySelector(".weetjes-content");
+const dierenContainer = document.querySelector(".plaatjes-container");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const animalInput = document.querySelector(".input");
+// Start het spel
+startGameButton.addEventListener("click", startGame);
+playAgainButton.addEventListener("click", restartGame);
 
-    // animalInput.addEventListener("input", function() {
-    //     controleerInput(animalInput.value);
-    // });
+// Start het spel na het invoeren van de naam
+function startGame() {
+    playerName = playerNameInput.value || "Speler";  // Gebruik "Speler" als de naam leeg is
+    startMenu.style.display = "none";
+    gameMenu.style.display = "block";
+    laadDieren();  // Zorg ervoor dat we de dieren inladen
+    laadWillekeurigDier();  // Begin met een willekeurig dier
+}
 
-    animalInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            controleerInput(animalInput.value);
-            event.target.value = "";
-        };
-    })
-});
+// Laad de dieren uit de JSON
+function laadDieren() {
+    fetch('dieren.json')
+        .then(response => response.json())
+        .then(data => {
+            dierenLijst = data;
+        });
+}
 
+// Laad een willekeurig dier en toon de gegevens
 function laadWillekeurigDier() {
-    const dierenContainer = document.querySelector(".plaatjes-container");
-    const weetjesTekst = document.querySelector(".weetjes-content");
-
-    if (dierenLijst.length >= dieren.length) {
-        console.log("Alle dieren zijn getoond.");
-        return;
-    }
-
+    if (dierenLijst.length === 0) return; // Controleer of de dierenlijst leeg is
     let randomNummer = createRandomNumber();
-    while (dierenLijst.includes(randomNummer)) {
-        randomNummer = createRandomNumber();
-    }
-
-    dierenLijst.push(randomNummer);
-    huidigDier = dieren[randomNummer];  // Opslaan in de globale variabele
-    dierenContainer.src = `images/${huidigDier.number}.jpg`;
+    huidigDier = dierenLijst[randomNummer]; // Opslaan van het huidige dier
+    dierenContainer.src = `images/${huidigDier.number}.jpg`;  // Zorg ervoor dat de afbeeldingen in de juiste map staan
     weetjesTekst.textContent = huidigDier.weetje;
 }
 
-function triggerCorrectAnimation() {
-    const correctIcon = document.getElementById("correctScore");
-    correctIcon.classList.add("correct-animation");
-    setTimeout(() => correctIcon.classList.remove("correct-animation"), 500);
-}
+// Controleer de invoer van de speler
+animalInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        controleerInput(animalInput.value);
+        event.target.value = "";
+    };
+});
 
-function triggerWrongAnimation() {
-    const wrongIcon = document.getElementById("wrongScore");
-    wrongIcon.classList.add("wrong-animation");
-    setTimeout(() => wrongIcon.classList.remove("wrong-animation"), 500);
-}
-
-function updateCorrect() {
-    correct++;
-    document.getElementById("correctScore").textContent = correct;
-    triggerCorrectAnimation();
-}
-
-function updateWrong() {
-    wrong++;
-    document.getElementById("wrongScore").textContent = wrong;
-    triggerWrongAnimation();
-}
-
-// CONTROLEER INPUT TEXTBOX
+// Controleer het ingevoerde antwoord
 function controleerInput(input) {
     if (normalizeString(input) === normalizeString(huidigDier.naam)) {
         updateCorrect();
     } else {
         updateWrong();
     }
-
-    laadWillekeurigDier();
+    laadWillekeurigDier();  // Laad een nieuw dier
 }
 
+// Normaliseer de invoer (hoofdletters, accenten verwijderen)
 function normalizeString(str) {
     return str
-      .toLowerCase()                        // ZET DE TEKST OM NAAR KLEINE LETTERS
-      .normalize("NFD")                     // SPLITS LETTERS EN DIAKRITISCHE TEKENS
-      .replace(/[\u0300-\u036f]/g, "");      // VERWIJDER DE DIAKRITISCHE TEKENS
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 }
 
-function createRandomNumber() {
-    return Math.floor(Math.random() * dieren.length)
+// Update de score voor correct antwoord
+function updateCorrect() {
+    correct++;
+    correctScore.textContent = correct;
+    triggerCorrectAnimation();
 }
+
+// Update de score voor verkeerd antwoord
+function updateWrong() {
+    wrong++;
+    wrongScore.textContent = wrong;
+    triggerWrongAnimation();
+}
+
+// Animatie voor juiste antwoorden
+function triggerCorrectAnimation() {
+    correctScore.classList.add("correct-animation");
+    setTimeout(() => correctScore.classList.remove("correct-animation"), 500);
+}
+
+// Animatie voor foute antwoorden
+function triggerWrongAnimation() {
+    wrongScore.classList.add("wrong-animation");
+    setTimeout(() => wrongScore.classList.remove("wrong-animation"), 500);
+}
+
+// Genereer een willekeurig nummer voor een dier
+function createRandomNumber() {
+    return Math.floor(Math.random() * dierenLijst.length);
+}
+
+// Einde van het spel
+function endGame() {
+    gameMenu.style.display = "none";
+    endMenu.style.display = "block";
+    finalScoreDisplay.textContent = `${correct} goed, ${wrong} fout`;
+}
+
+// Start het spel opnieuw
+function restartGame() {
+    correct = 0;
+    wrong = 0;
+    correctScore.textContent = "0";
+    wrongScore.textContent = "0";
+    finalScoreDisplay.textContent = "0";
+    startMenu.style.display = "block";
+    endMenu.style.display = "none";
+    playerNameInput.value = '';
+}
+
+// Event listener voor de "Enter" toets om het antwoord in te voeren
+animalInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        controleerInput(animalInput.value);
+        event.target.value = "";  // Wis de invoer na het controleren
+    }
+});
