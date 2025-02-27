@@ -10,7 +10,6 @@ fetch('dieren.json')
     .then(response => response.json())
     .then(data => {   
         dieren.push(...data);
-        laadWillekeurigDier()
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function startGame() {
     playerName = document.getElementById('playerName').value; // Set the global variable
     if (playerName) {
+        laadWillekeurigDier()
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.media-container').style.display = 'grid';
         document.querySelector('.stats-container').style.display = 'grid';
@@ -114,12 +114,12 @@ function toonEindScherm() {
 }
 
 function restartGame() {
-    // laadWillekeurigDier();
     correct = 0;
     wrong = 0;
     dierenLijst = [];
     huidigDier = null;
     playerName = "";
+    laadWillekeurigDier();
     document.getElementById('playerName').value = "";
     document.getElementById("correctScore").textContent = correct;
     document.getElementById("wrongScore").textContent = wrong;
