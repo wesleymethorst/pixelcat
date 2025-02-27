@@ -45,8 +45,7 @@ function laadWillekeurigDier() {
     const weetjesTekst = document.querySelector(".weetjes-content");
 
     if (dierenLijst.length >= dieren.length) {
-        console.log("Alle dieren zijn getoond.");
-        console.log(`Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`); // Use the global variable
+        toonEindScherm();
         return;
     }
 
@@ -105,4 +104,20 @@ function normalizeString(str) {
 
 function createRandomNumber() {
     return Math.floor(Math.random() * dieren.length)
+}
+
+function toonEindScherm() {
+    document.querySelector('.media-container').style.display = 'none';
+    document.querySelector('.stats-container').style.display = 'none';
+    document.querySelector('.end-container').style.display = 'flex';
+    document.getElementById('endMessage').textContent = `Naam: ${playerName}, Correct: ${correct}, Wrong: ${wrong}`;
+}
+
+function restartGame() {
+    correct = 0;
+    wrong = 0;
+    dierenLijst.length = 0;
+    huidigDier = null;
+    document.querySelector('.end-container').style.display = 'none';
+    document.querySelector('.start-container').style.display = 'flex';
 }

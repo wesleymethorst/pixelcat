@@ -276,3 +276,49 @@ hr {
 .start-box button:hover {
     background-color: #2E7D32;
 }
+
+.end-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.end-box {
+    background-color: #4CAF50;
+    padding: 2em;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.end-box h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.end-box p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.end-box button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #388E3C;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.end-box button:hover {
+    background-color: #2E7D32;
+}
