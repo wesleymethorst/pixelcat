@@ -163,11 +163,13 @@ function fetchTopScores() {
     fetch('/api/leaderboard')
         .then(response => response.json())
         .then(data => {
-            console.log('Fetched scores:', data); // Log fetched scores
+        console.log('Fetched scores:', data); 
+            const scores = data.scores;
             scores.sort((a, b) => b.score - a.score);
             const topScores = scores.slice(0, 5);
             const scoreboardContent = document.querySelector(".scoreboard-content");
             scoreboardContent.innerHTML = topScores.map(score => `<li>${score.naam} - ${score.score} goed</li>`).join('');
         })
-        .catch(error => console.error('Fout bij het ophalen van scores:', error));
+    .catch(error => console.error('Fout bij het ophalen van scores:', error));
+  
 }
