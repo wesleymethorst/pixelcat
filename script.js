@@ -21,6 +21,10 @@ fetch('/api/leaderboard')
   .catch(error => console.error('Fout bij het ophalen van data:', error));
 
 
+  data.forEach(item => {
+    console.log(`Naam: ${item.naam}, Score: ${item.score}`);
+  });
+
 document.addEventListener("DOMContentLoaded", () => {
     // Preload images
     preloadImages();
