@@ -14,10 +14,10 @@ export default async function handler(req, res) {
     const data = await db.collection("scores").find({}).toArray();
     const formattedData = data.map(score => ({
       id: score._id,
-      name: score.name,
-      points: score.points
+      name: score.naam,
+      points: score.score
     }));
-    res.status(200).json({ data: data });
+    res.status(200).json({ data: formattedData });
   } catch (error) {
     res.status(500).json({ error: error.message });
   } finally {
