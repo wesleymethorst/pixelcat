@@ -11,8 +11,15 @@ export default async function handler(req, res) {
   try {
     await client.connect();
     const db = client.db("pixelcat");
-    const data = await db.collection("scores").find({}).toArray();
-    res.status(200).json({ scores: data });
+
+    if (req.method === 'POST') {
+      const { naam, score } = req.body;
+      const result = await db.collection("scores").insertOne({ naam, score });
+      res.status(201).json({ message: "Score toegevoegd", result });
+    } else {
+      const data = await db.collection("scores").find({}).toArray();
+      res.status(200).json({ scores: data });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   } finally {

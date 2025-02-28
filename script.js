@@ -142,7 +142,29 @@ function toonEindScherm() {
         <p>Goed: ${correct}</p>
         <p>Fout: ${wrong}</p>
     `;
-  }
+    submitScore(); // Submit the score when the game ends
+}
+
+function submitScore() {
+    const scoreData = {
+        naam: playerName,
+        score: correct
+    };
+
+    fetch('/api/leaderboard', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(scoreData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Score submitted:', data);
+        fetchTopScores(); // Refresh the top scores after submitting
+    })
+    .catch(error => console.error('Fout bij het versturen van score:', error));
+}
 
 function restartGame() {
     correct = 0;
