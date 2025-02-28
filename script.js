@@ -3,8 +3,7 @@ const dierenLijst = [];
 let huidigDier = null;
 let correct = 0;
 let wrong = 0;
-let playerName = "";
-
+let playerName = ""; // Declare playerName as a global variable
 
 // VERKRIJG ALLE DATA OVER DIEREN
 fetch('dieren.json')
