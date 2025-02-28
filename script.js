@@ -142,7 +142,7 @@ function toonEindScherm() {
         <p>Goed: ${correct}</p>
         <p>Fout: ${wrong}</p>
     `;
-    submitScore(); // Submit the score when the game ends
+    submitScore();
 }
 
 function submitScore() {
@@ -161,7 +161,7 @@ function submitScore() {
     .then(response => response.json())
     .then(data => {
         console.log('Score submitted:', data);
-        fetchTopScores(); // Refresh the top scores after submitting
+        fetchTopScores();
     })
     .catch(error => console.error('Fout bij het versturen van score:', error));
 }
