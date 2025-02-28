@@ -138,45 +138,6 @@ function toonEindScherm() {
         <p>Goed: ${correct}</p>
         <p>Fout: ${wrong}</p>
     `;
-  
-    // Eerst de score opslaan via de API:
-    fetch('/api/scoreboard', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ playerName, score: correct })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-      console.log("Score toegevoegd:", data);
-      // Vervolgens het leaderboard ophalen:
-      updateLeaderboard();
-    })
-    .catch(err => console.error("Fout bij score toevoegen:", err));
-  }
-  
-  function updateLeaderboard() {
-    fetch('/api/scoreboard')
-      .then(response => response.json())
-      .then(data => {
-        const leaderboard = data.leaderboard;
-        const leaderboardContainer = document.querySelector('.scoreboard-content');
-        // Maak de inhoud leeg
-        leaderboardContainer.innerHTML = '';
-        // Voeg elke score toe als een list item
-        leaderboard.forEach(entry => {
-          const li = document.createElement('li');
-          li.textContent = `${entry.playerName} - ${entry.score} goed`;
-          leaderboardContainer.appendChild(li);
-        });
-      })
-      .catch(err => console.error("Fout bij ophalen leaderboard:", err));
   }
 
 function restartGame() {
