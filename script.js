@@ -41,6 +41,7 @@ function preloadImages() {
 
 function startGame() {
     playerName = document.getElementById('playerName').value; // Set the global variable
+    console.log(`Starting game for player: ${playerName}`); // Log player name
     if (playerName) {
         laadWillekeurigDier();
         document.querySelector('.start-container').style.display = 'none';
@@ -163,6 +164,7 @@ function fetchTopScores() {
         .then(response => response.json())
         .then(data => {
             const scores = data.data;
+            console.log('Fetched scores:', scores); // Log fetched scores
             scores.sort((a, b) => b.score - a.score);
             const topScores = scores.slice(0, 5);
             const scoreboardContent = document.querySelector(".scoreboard-content");
