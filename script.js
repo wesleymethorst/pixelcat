@@ -12,6 +12,15 @@ fetch('dieren.json')
         dieren.push(...data);
 });
 
+fetch('/api/leaderboard')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Data van de server:', data);
+    // Werk met de data, bijvoorbeeld door de leaderboard te tonen op je site
+  })
+  .catch(error => console.error('Fout bij het ophalen van data:', error));
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Preload images
     preloadImages();
