@@ -16,14 +16,8 @@ fetch('/api/leaderboard')
   .then(response => response.json())
   .then(data => {
     console.log('Data van de server:', data);
-    // Werk met de data, bijvoorbeeld door de leaderboard te tonen op je site
   })
   .catch(error => console.error('Fout bij het ophalen van data:', error));
-
-
-  data.forEach(item => {
-    console.log(`Naam: ${item.naam}, Score: ${item.score}`);
-  });
 
 document.addEventListener("DOMContentLoaded", () => {
     // Preload images
@@ -40,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
             controleerInput(animalInput.value);
             event.target.value = "";
         };
-    })
+    });
+
+    fetchTopScores();
 });
 
 function preloadImages() {
@@ -166,4 +162,17 @@ function restartGame() {
     document.querySelector('.start-container').style.display = 'flex';
     document.querySelector('.media-container').style.display = 'none';
     document.querySelector('.stats-container').style.display = 'none';
+}
+
+function fetchTopScores() {
+    fetch('/api/leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            const scores = data.data;
+            scores.sort((a, b) => b.score - a.score);
+            const topScores = scores.slice(0, 5);
+            const scoreboardContent = document.querySelector(".scoreboard-content");
+            scoreboardContent.innerHTML = topScores.map(score => `<li>${score.naam} - ${score.score} goed</li>`).join('');
+        })
+        .catch(error => console.error('Fout bij het ophalen van scores:', error));
 }
