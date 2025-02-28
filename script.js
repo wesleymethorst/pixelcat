@@ -163,8 +163,7 @@ function fetchTopScores() {
     fetch('/api/leaderboard')
         .then(response => response.json())
         .then(data => {
-            const scores = data;
-            console.log('Fetched scores:', scores); // Log fetched scores
+            console.log('Fetched scores:', data); // Log fetched scores
             scores.sort((a, b) => b.score - a.score);
             const topScores = scores.slice(0, 5);
             const scoreboardContent = document.querySelector(".scoreboard-content");

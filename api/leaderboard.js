@@ -12,12 +12,7 @@ export default async function handler(req, res) {
     await client.connect();
     const db = client.db("pixelcat");
     const data = await db.collection("scores").find({}).toArray();
-    const formattedData = data.map(score => ({
-      id: score._id,
-      name: score.naam,
-      points: score.score
-    }));
-    res.status(200).json({ data: formattedData });
+    res.status(200).json({ scores: data });
   } catch (error) {
     res.status(500).json({ error: error.message });
   } finally {
