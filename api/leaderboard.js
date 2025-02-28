@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       name: score.name,
       points: score.points
     }));
-    res.status(200).json({ data: formattedData });
+    res.status(200).json({ data: data });
   } catch (error) {
     res.status(500).json({ error: error.message });
   } finally {
