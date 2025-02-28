@@ -15,8 +15,7 @@ export default async function handler(req, res) {
     const formattedData = data.map(score => ({
       id: score._id,
       name: score.name,
-      points: score.points,
-      date: score.date
+      points: score.points
     }));
     res.status(200).json({ data: formattedData });
   } catch (error) {

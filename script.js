@@ -12,6 +12,13 @@ fetch('dieren.json')
         dieren.push(...data);
 });
 
+fetch('/api/leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => console.error('Fout bij het ophalen van scores:', error));
+
 document.addEventListener("DOMContentLoaded", () => {
     // Preload images
     preloadImages();
@@ -163,7 +170,7 @@ function fetchTopScores() {
     fetch('/api/leaderboard')
         .then(response => response.json())
         .then(data => {
-            const scores = data.data;
+            const scores = data;
             console.log('Fetched scores:', scores); // Log fetched scores
             scores.sort((a, b) => b.score - a.score);
             const topScores = scores.slice(0, 5);
