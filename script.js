@@ -12,13 +12,6 @@ fetch('dieren.json')
         dieren.push(...data);
 });
 
-fetch('/api/leaderboard')
-  .then(response => response.json())
-  .then(data => {
-    console.log('Data van de server:', data);
-  })
-  .catch(error => console.error('Fout bij het ophalen van data:', error));
-
 document.addEventListener("DOMContentLoaded", () => {
     // Preload images
     preloadImages();
@@ -49,10 +42,11 @@ function preloadImages() {
 function startGame() {
     playerName = document.getElementById('playerName').value; // Set the global variable
     if (playerName) {
-        laadWillekeurigDier()
+        laadWillekeurigDier();
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.media-container').style.display = 'grid';
         document.querySelector('.stats-container').style.display = 'grid';
+        fetchTopScores(); // Fetch top scores after starting the game
         console.log(`Player Name: ${playerName}`);
     } else {
         alert('Voer je naam in om te beginnen!');
