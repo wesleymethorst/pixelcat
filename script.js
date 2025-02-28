@@ -3,7 +3,11 @@ const dierenLijst = [];
 let huidigDier = null;
 let correct = 0;
 let wrong = 0;
-let playerName = ""; // Declare playerName as a global variable
+let playerName = "";
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
+await client.connect();
+
 
 // VERKRIJG ALLE DATA OVER DIEREN
 fetch('dieren.json')
