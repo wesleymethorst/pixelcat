@@ -35,7 +35,7 @@ main {
 
 footer {
     grid-area: footer;
-    background-color: red;
+    background-color: #4CAF50;
 }
 
 .media-container {
